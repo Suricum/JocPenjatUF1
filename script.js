@@ -21,8 +21,8 @@ function iniciarPartida() {
 
     document.getElementById("menu").style.display = "none";
     document.getElementById("joc").style.display = "block";
-    mostrarParaula(); // Mostra la paraula amb '_'
-    document.getElementById("imatge-penjat").src = `penjat0.png`; // Mostra la imatge inicial sense perdre vides
+    mostrarParaula();
+    document.getElementById("imatge-penjat").src = `penjat0.png`; 
 }
 
 function actualitzarCrono() {
