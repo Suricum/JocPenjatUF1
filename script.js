@@ -1,5 +1,3 @@
-// Ainhoa Brizuela
-
 let paraulaSecreta = "";
 let lletresEndevinades = [];
 let vides = 6;
