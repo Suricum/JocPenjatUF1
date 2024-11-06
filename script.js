@@ -11,6 +11,7 @@ function obtenirParaulaAleatoria() {
 }
 
 function iniciarPartida() {
+
     paraulaSecreta = obtenirParaulaAleatoria();
     lletresEndevinades = [];
     vides = 6;
@@ -21,27 +22,34 @@ function iniciarPartida() {
     document.getElementById("joc").style.display = "block";
     mostrarParaula();
     document.getElementById("imatge-penjat").src = `penjat0.png`; 
+
 }
 
 function actualitzarCrono() {
+
     const tempsPassat = Math.floor((Date.now() - horaInici) / 1000);
     const minuts = String(Math.floor(tempsPassat / 60)).padStart(2, "0");
     const segons = String(tempsPassat % 60).padStart(2, "0");
     document.getElementById("temps-passat").textContent = `${minuts}:${segons}`;
+
 }
 
 function mostrarParaula() {
+
     const mostrar = paraulaSecreta
         .split('')
         .map(lletra => lletresEndevinades.includes(lletra) ? lletra : "_")
         .join(' ');
     document.getElementById("mostrar-paraula").textContent = mostrar;
+
 }
 
 function comprovarLletra() {
+
     const entrada = document.getElementById("entrada-lletra").value.toUpperCase();
     document.getElementById("entrada-lletra").value = '';
     if (entrada && !lletresEndevinades.includes(entrada)) {
+
         lletresEndevinades.push(entrada);
         if (paraulaSecreta.includes(entrada)) {
             mostrarParaula();
@@ -55,14 +63,19 @@ function comprovarLletra() {
                 acabarPartida(false);
             }
         }
+
     }
+
 }
 
 function actualitzarImatgePenjat() {
-    document.getElementById("imatge-penjat").src = `penjat${6 - vides}.png`;
+
+    document.getElementById("imatge-penjat").src = `penjat${5 - vides}.png`;
+
 }
 
 function acabarPartida(guanyat) {
+
     clearInterval(intervalCrono);
     const tempsPassat = document.getElementById("temps-passat").textContent;
     const data = new Date().toLocaleString();
@@ -70,14 +83,18 @@ function acabarPartida(guanyat) {
     guardarEstadistiques();
     alert(guanyat ? "Has guanyat!" : `Has perdut! La paraula era ${paraulaSecreta}.`);
     reiniciarPartida();
+    
 }
 
 function reiniciarPartida() {
+
     document.getElementById("menu").style.display = "block";
     document.getElementById("joc").style.display = "none";
+
 }
 
 function mostrarEstadistiques() {
+
     document.getElementById("menu").style.display = "none";
     document.getElementById("estadistiques").style.display = "block";
     carregarEstadistiques();
@@ -85,22 +102,28 @@ function mostrarEstadistiques() {
     llistaEstadistiques.innerHTML = estadistiques.map(estat => 
         `<div>${estat.data} - ${estat.guanyat ? 'Guanyat' : 'Perdut'} - Temps: ${estat.tempsPassat}</div>`
     ).join('');
+
 }
 
 function tornarAlMenu() {
+
     document.getElementById("estadistiques").style.display = "none";
     document.getElementById("menu").style.display = "block";
+
 }
 
 function guardarEstadistiques() {
+
     if (modeDesament === "localStorage") {
         localStorage.setItem("estadistiques", JSON.stringify(estadistiques));
     } else {
         document.cookie = `estadistiques=${JSON.stringify(estadistiques)}; path=/`;
     }
+
 }
 
 function carregarEstadistiques() {
+
     if (modeDesament === "localStorage") {
         const estadGuardades = localStorage.getItem("estadistiques");
         estadistiques = estadGuardades ? JSON.parse(estadGuardades) : [];
@@ -112,4 +135,5 @@ function carregarEstadistiques() {
             estadistiques = [];
         }
     }
+    
 }
