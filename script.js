@@ -9,7 +9,7 @@ const modeDesament = "localStorage";
 function obtenirParaulaAleatoria() {
 
     return PARAULES[Math.floor(Math.random() * PARAULES.length)].toUpperCase();
-    
+
 }
 
 function iniciarPartida() {
