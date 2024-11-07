@@ -42,7 +42,7 @@ function enviarImatge(imatge) {
 
     if (popupVentana || !popupVentana.closed) {
 
-        popupVentana.postMessage({ src: imagen }, "*");
+        popupVentana.postMessage({ src: imatge }, "*");
 
     }
 
