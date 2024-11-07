@@ -4,6 +4,7 @@ let vides = 6;
 let horaInici;
 let intervalCrono;
 let estadistiques = [];
+let popupVentana
 const modeDesament = "localStorage";
 
 function obtenirParaulaAleatoria() {
@@ -23,7 +24,27 @@ function iniciarPartida() {
     document.getElementById("menu").style.display = "none";
     document.getElementById("joc").style.display = "block";
     mostrarParaula();
-    document.getElementById("imatge-penjat").src = `penjat0.png`; 
+
+    abrirPopup();
+    enviarImatge('penjat0.png');
+
+}
+
+function abrirPopup() {
+    if (!popupVentana || popupVentana.closed) {
+
+        popupVentana = window.open("penjatImatge.html", "popupVentana", "width=100,height=200");
+
+    }
+}
+
+function enviarImatge(imatge) {
+
+    if (popupVentana || !popupVentana.closed) {
+
+        popupVentana.postMessage({ src: imagen }, "*");
+
+    }
 
 }
 
@@ -72,7 +93,8 @@ function comprovarLletra() {
 
 function actualitzarImatgePenjat() {
 
-    document.getElementById("imatge-penjat").src = `penjat${5 - vides}.png`;
+    let imatge = `penjat${6-vides}.png`;
+    enviarImatge(imatge);
 
 }
 
@@ -83,6 +105,11 @@ function acabarPartida(guanyat) {
     const data = new Date().toLocaleString();
     estadistiques.unshift({ guanyat, tempsPassat, data });
     guardarEstadistiques();
+    if (popupVentana && !popupVentana.closed) {
+
+        popupVentana.close()
+
+    }
     alert(guanyat ? "Has guanyat!" : `Has perdut! La paraula era ${paraulaSecreta}.`);
     reiniciarPartida();
     

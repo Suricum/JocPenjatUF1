@@ -32,6 +32,7 @@ h2 {
 
 .word-display {
     font-size: 1.5em;
+    text-align: center;
     margin: 20px 0;
     letter-spacing: 8px;
     color: #333;
