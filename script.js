@@ -50,7 +50,7 @@ function enviarImatge(imatge) {
 
 function actualitzarCrono() {
 
-    const tempsPassat = Math.floor((Date.now() - horaInici) / 1000);
+    let tempsPassat = Math.floor((Date.now() - horaInici) / 1000);
     const minuts = String(Math.floor(tempsPassat / 60)).padStart(2, "0");
     const segons = String(tempsPassat % 60).padStart(2, "0");
     document.getElementById("temps-passat").textContent = `${minuts}:${segons}`;
@@ -59,7 +59,7 @@ function actualitzarCrono() {
 
 function mostrarParaula() {
 
-    const mostrar = paraulaSecreta
+    let mostrar = paraulaSecreta
         .split('')
         .map(lletra => lletresEndevinades.includes(lletra) ? lletra : "_")
         .join(' ');
@@ -69,7 +69,7 @@ function mostrarParaula() {
 
 function comprovarLletra() {
 
-    const entrada = document.getElementById("entrada-lletra").value.toUpperCase();
+    let entrada = document.getElementById("entrada-lletra").value.toUpperCase();
     document.getElementById("entrada-lletra").value = '';
     if (entrada && !lletresEndevinades.includes(entrada)) {
 
@@ -101,8 +101,8 @@ function actualitzarImatgePenjat() {
 function acabarPartida(guanyat) {
 
     clearInterval(intervalCrono);
-    const tempsPassat = document.getElementById("temps-passat").textContent;
-    const data = new Date().toLocaleString();
+    let tempsPassat = document.getElementById("temps-passat").textContent;
+    let data = new Date().toLocaleString();
     estadistiques.unshift({ guanyat, tempsPassat, data });
     guardarEstadistiques();
     if (popupVentana && !popupVentana.closed) {
@@ -127,7 +127,7 @@ function mostrarEstadistiques() {
     document.getElementById("menu").style.display = "none";
     document.getElementById("estadistiques").style.display = "block";
     carregarEstadistiques();
-    const llistaEstadistiques = document.getElementById("llista-estadistiques");
+    let llistaEstadistiques = document.getElementById("llista-estadistiques");
     llistaEstadistiques.innerHTML = estadistiques.map(estat => 
         `<div>${estat.data} - ${estat.guanyat ? 'Guanyat' : 'Perdut'} - Temps: ${estat.tempsPassat}</div>`
     ).join('');
@@ -154,10 +154,10 @@ function guardarEstadistiques() {
 function carregarEstadistiques() {
 
     if (modeDesament === "localStorage") {
-        const estadGuardades = localStorage.getItem("estadistiques");
+        let estadGuardades = localStorage.getItem("estadistiques");
         estadistiques = estadGuardades ? JSON.parse(estadGuardades) : [];
     } else {
-        const galetaEstad = document.cookie.split("; ").find(row => row.startsWith("estadistiques="));
+        let galetaEstad = document.cookie.split("; ").find(row => row.startsWith("estadistiques="));
         if (galetaEstad) {
             estadistiques = JSON.parse(galetaEstad.split("=")[1]);
         } else {
