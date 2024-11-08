@@ -1,26 +1,16 @@
 <!DOCTYPE html> 
 <html lang="es"> 
+
     <head> 
         <meta charset="UTF-8"> 
         <title>Imatge del Penjat</title> 
         
-    </head> 
+    </head>
     <body> 
 
         <img id="imatge-penjat" src="penjat0.png" alt="penjat"> 
+        <script src="popupVentana.js"></script>
 
-        <script> 
-        
-            window.addEventListener("message", (e) => { 
-
-                if (e.data && e.data.src) { 
-
-                    document.getElementById("imatge-penjat").src = e.data.src; 
-
-                } 
-
-            })
-
-        </script> 
     </body> 
+
 </html>

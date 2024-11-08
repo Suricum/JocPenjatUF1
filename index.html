@@ -9,29 +9,32 @@
 <body>
 
     <div id="menu" class="center">
+
         <button onclick="iniciarPartida()">Jugar</button>
         <button onclick="mostrarEstadistiques()">Estadístiques</button>
+
     </div>
 
     <div id="joc" class="game-container" style="display: none;">
+
         <h2>El Joc del Penjat</h2>
-        
-        <!-- <div id="imatge-penjat-container" class="center">
-            <img id="imatge-penjat" src="penjat0.png" alt="penjat">
-        </div> -->
         <div id="mostrar-paraula" class="word-display">_ _ _ _ _</div>
         <input type="text" id="entrada-lletra" maxlength="1" placeholder="Introdueix una lletra">
         <button onclick="comprovarLletra()">Comprova</button>
         <div id="temps-passat">00:00</div>
+
     </div>
 
     <div id="estadistiques" class="center" style="display: none;">
+
         <h2>Estadístiques</h2>
         <div id="llista-estadistiques"></div>
         <button onclick="tornarAlMenu()">Torna al Menú</button>
+
     </div>
 
     <script src="paraules.js"></script>
     <script src="script.js"></script>
+    
 </body>
 </html>
