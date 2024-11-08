@@ -30,11 +30,13 @@ function iniciarPartida() {
 }
 
 function abrirPopup() {
+
     if (!popupVentana || popupVentana.closed) {
 
         popupVentana = window.open("penjatImatge.html", "", "width=100,height=200")
 
     }
+
 }
 
 function enviarImatge(imatge) {
@@ -69,20 +71,26 @@ function comprovarLletra() {
 
     let entrada = document.getElementById("entrada-lletra").value.toUpperCase()
     document.getElementById("entrada-lletra").value = '';
+
     if (entrada && !lletresEndevinades.includes(entrada)) {
 
         lletresEndevinades.push(entrada)
+
         if (paraulaSecreta.includes(entrada)) {
+
             mostrarParaula();
             if (paraulaSecreta.split('').every(lletra => lletresEndevinades.includes(lletra))) {
                 acabarPartida(true);
             }
+
         } else {
+
             vides--;
             actualitzarImatgePenjat();
             if (vides === 0) {
                 acabarPartida(false);
             }
+
         }
         
     }
@@ -103,10 +111,9 @@ function acabarPartida(guanyat) {
     let data = new Date().toLocaleString();
     estadistiques.unshift({ guanyat, tempsPassat, data })
     guardarEstadistiques();
+
     if (popupVentana && !popupVentana.closed) {
-
         popupVentana.close()
-
     }
     alert(guanyat ? "Has guanyat!" : `Has perdut! La paraula era ${paraulaSecreta}.`)
     reiniciarPartida();
@@ -125,6 +132,7 @@ function mostrarEstadistiques() {
     document.getElementById("menu").style.display = "none"
     document.getElementById("estadistiques").style.display = "block"
     carregarEstadistiques();
+
     let llistaEstadistiques = document.getElementById("llista-estadistiques")
     llistaEstadistiques.innerHTML = estadistiques.map(estat => 
         `<div>${estat.data} - ${estat.guanyat ? 'Guanyat' : 'Perdut'} - Temps: ${estat.tempsPassat}</div>`
@@ -152,15 +160,19 @@ function guardarEstadistiques() {
 function carregarEstadistiques() {
 
     if (modeDesament === "localStorage") {
+
         let estadGuardades = localStorage.getItem("estadistiques")
         estadistiques = estadGuardades ? JSON.parse(estadGuardades) : [];
+
     } else {
+
         let galetaEstad = document.cookie.split("; ").find(row => row.startsWith("estadistiques="))
         if (galetaEstad) {
             estadistiques = JSON.parse(galetaEstad.split("=")[1])
         } else {
             estadistiques = [];
         }
+
     }
     
 }
