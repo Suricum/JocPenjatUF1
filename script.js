@@ -1,11 +1,11 @@
 let paraulaSecreta = "";
 let lletresEndevinades = [];
-let vides = 6;
-let horaInici;
-let intervalCrono;
-let estadistiques = [];
+let vides = 6
+let horaInici
+let intervalCrono
+let estadistiques = []
 let popupVentana
-const modeDesament = "localStorage";
+let modeDesament = "localStorage"
 
 function obtenirParaulaAleatoria() {
 
