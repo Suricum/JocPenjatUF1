@@ -17,7 +17,6 @@ function iniciarPartida() {
 
     paraulaSecreta = obtenirParaulaAleatoria();
     lletresEndevinades = [];
-    vides = 6;
     horaInici = Date.now();
     intervalCrono = setInterval(actualitzarCrono, 1000);
 
@@ -26,14 +25,14 @@ function iniciarPartida() {
     mostrarParaula();
 
     abrirPopup();
-    enviarImatge('penjat0.png');
+    enviarImatge(`penjat${6-vides}.png`);
 
 }
 
 function abrirPopup() {
     if (!popupVentana || popupVentana.closed) {
 
-        popupVentana = window.open("penjatImatge.html", "popupVentana", "width=100,height=200");
+        popupVentana = window.open("penjatImatge.html", "", "width=100,height=200");
 
     }
 }
@@ -86,7 +85,7 @@ function comprovarLletra() {
                 acabarPartida(false);
             }
         }
-
+        
     }
 
 }
