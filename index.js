@@ -18,6 +18,7 @@ function iniciarPartida() {
 
     paraulaSecreta = obtenirParaulaAleatoria();
     lletresEndevinades = [];
+    vides = 6
     horaInici = Date.now();
     intervalCrono = setInterval(actualitzarCrono, 1000);
 

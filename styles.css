@@ -83,9 +83,5 @@ button:hover {
 }
 
 #lletres-incorrectes {
-    margin-top: 15px;
-    font-size: 18px;
-    color: #d9534f;
-    text-align: center;
-    word-spacing: 8px;
+    color: red;
 }
