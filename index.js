@@ -6,6 +6,7 @@ let intervalCrono
 let estadistiques = []
 let popupVentana
 let modeDesament = "localStorage"
+let lletresIncorrectes = [];
 
 function obtenirParaulaAleatoria() {
 
@@ -84,7 +85,8 @@ function comprovarLletra() {
             }
 
         } else {
-
+            lletresIncorrectes.push(entrada);
+            actualitzarLletresIncorrectes();
             vides--;
             actualitzarImatgePenjat();
             if (vides === 0) {
@@ -175,4 +177,10 @@ function carregarEstadistiques() {
 
     }
     
+}
+
+function actualitzarLletresIncorrectes() {
+
+    document.getElementById("lletres-incorrectes").textContent = `Lletres incorrectes: ${lletresIncorrectes.join(', ')}`
+
 }
