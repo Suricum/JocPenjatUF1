@@ -18,12 +18,14 @@ function iniciarPartida() {
 
     paraulaSecreta = obtenirParaulaAleatoria();
     lletresEndevinades = [];
+    lletresIncorrectes = [];
     vides = 6
     horaInici = Date.now();
     intervalCrono = setInterval(actualitzarCrono, 1000);
 
     document.getElementById("menu").style.display = "none"
     document.getElementById("joc").style.display = "block"
+    document.getElementById("lletres-incorrectes").textContent = "";
     mostrarParaula();
 
     abrirPopup();
