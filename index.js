@@ -24,7 +24,7 @@ function iniciarPartida() {
     intervalCrono = setInterval(actualitzarCrono, 1000);
 
     document.getElementById("menu").style.display = "none"
-    document.getElementById("joc").style.display = "block"
+    document.getElementById("joc").style.display = "block" 
     document.getElementById("lletres-incorrectes").textContent = "";
     mostrarParaula();
 
@@ -42,12 +42,11 @@ function abrirPopup() {
     }
 
 }
-
 function enviarImatge(imatge) {
 
     if (popupVentana || !popupVentana.closed) {
 
-        popupVentana.postMessage({ src: imatge }, "*")
+        popupVentana.postMessage({ src: imatge }, "*") 
 
     }
 
@@ -114,7 +113,7 @@ function acabarPartida(guanyat) {
     clearInterval(intervalCrono);
     let tempsPassat = document.getElementById("temps-passat").textContent
     let data = new Date().toLocaleString();
-    estadistiques.unshift({ guanyat, tempsPassat, data })
+    estadistiques.unshift({ guanyat, tempsPassat, data }) 
     guardarEstadistiques();
 
     if (popupVentana && !popupVentana.closed) {
@@ -142,7 +141,6 @@ function mostrarEstadistiques() {
     llistaEstadistiques.innerHTML = estadistiques.map(estat => 
         `<div>${estat.data} - ${estat.guanyat ? 'Guanyat' : 'Perdut'} - Temps: ${estat.tempsPassat}</div>`
     ).join('')
-
 }
 
 function tornarAlMenu() {
@@ -161,6 +159,7 @@ function guardarEstadistiques() {
     }
 
 }
+
 
 function carregarEstadistiques() {
 
